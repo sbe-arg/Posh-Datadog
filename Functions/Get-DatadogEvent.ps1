@@ -4,10 +4,10 @@
 .DESCRIPTION
     Default time is Last 30 minutes
 .EXAMPLE
-    Get-Datadog -Filter valuefromtextinmonitor -Tags "tag1:value1" -Sources "alert,datadog" -Time [int]inseconds
+    Get-DatadogEvent -Filter "from-text-in-monitor" -Tags "tag1:value1" -Sources "alert,datadog" -Time [int]inseconds
 #>
 
-function Get-Datadog {
+function Get-DatadogEvent {
   param(
       [Parameter(Mandatory=$false)]
       [string]$Api_Key = $env:Datadog_API_Key,

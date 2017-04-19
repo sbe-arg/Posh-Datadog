@@ -4,10 +4,10 @@
 .DESCRIPTION
     Remove events to datadog
 .EXAMPLE
-    Remove-Datadogevent -EventId "idhere"
+    Remove-DatadogEvent -EventId "idhere"
 #>
 
-function Remove-DataDogEvent {
+function Remove-DatadogEvent {
   param(
       [Parameter(Mandatory=$false)]
       [string]$Api_Key = $env:Datadog_API_Key,

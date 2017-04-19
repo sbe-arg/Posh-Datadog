@@ -5,10 +5,10 @@
     Send events to datadog
 .EXAMPLE
     $Tags = @("tag1:value1","tag2:value2","tag3:value3") | ConvertTo-Json
-    Send-Datadog -Title "my title" -Message "this is an event content" -Tags $Tags
+    Send-DatadogEvent -Title "my title" -Message "this is an event content" -Tags $Tags
 #>
 
-function Send-DataDog {
+function Send-DatadogEvent {
   param(
       [Parameter(Mandatory=$false)]
       [string]$Api_Key = $env:Datadog_API_Key,
