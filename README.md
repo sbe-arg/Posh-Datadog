@@ -11,6 +11,10 @@ Get-DatadogEvent -Filter "from-text-in-monitor" -Tags "tag1:value1" -Sources "al
 Remove-DatadogEvent -EventId "eventidhere"
 # Send events:
 Send-DatadogEvent -Title "my title" -Message "this is an event content" -Tags $Tags
+# Query monitors:
+Get-DatadogMonitor -MonitorId "idhere"
+Get-DatadogMonitor -Filter "this is a monitor name/title"
+Get-DatadogMonitor -Backup # saves a copy on $folder of selected monitors in json for easy restore
 ```
 
 
