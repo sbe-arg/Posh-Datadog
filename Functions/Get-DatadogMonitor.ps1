@@ -30,7 +30,8 @@ function Get-DatadogMonitor {
       $results
     }
     else{
-      $results | where {$_.Name -like "*$Filter*"}
+      $results = $results | where {$_.Name -like "*$Filter*"}
+      $results
     }
 
     if($Backup){
