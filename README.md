@@ -42,6 +42,8 @@ Set-DatadogUser -User "fullemailhere"
 Set-DatadogUser -SetRole "adm,ro,st"
 Set-DatadogUser -SetName "sting"
 Set-DatadogUser -SetEmail "string"
+# Metrics:
+Send-DatadogMetric -Metric "cool.beans.success" -Value "20"
 ```
 
 
