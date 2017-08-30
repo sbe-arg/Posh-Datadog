@@ -4,7 +4,8 @@
 .DESCRIPTION
     Send single gauge metric to datadog.
 .EXAMPLE
-    Send-DatadogMetric -Metric "cool.beans.success" -Value "20"
+    $Tags = @("creator:$env:USERNAME","host:$env:COMPUTERNAME","created-by:powershell.posh-datadog")
+    Send-DatadogMetric -Metric "cool.beans.success" -Value "20" -Tags $Tags
 #>
 
 function Send-DatadogMetric {
@@ -17,6 +18,8 @@ function Send-DatadogMetric {
 
       [Parameter(Mandatory=$true)]
       [int]$Value,
+
+      [string]$Tags = "`"created-by:powershell.posh-datadog`"", # needs a default tag if no -tags $tags specified
 
       [ValidateSet("gauge")] # other metrics types are not available via API according to https://help.datadoghq.com/hc/en-us/articles/206955236-Metric-types-in-Datadog
       [string]$Type = "gauge"
@@ -31,7 +34,8 @@ function Send-DatadogMetric {
       [
         { "metric": "$Metric",
           "points": [[$CurrentTime, $Value]],
-          "type": "$Type"
+          "type": "$Type",
+          "tags" : $Tags
         }
       ]
     }

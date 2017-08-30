@@ -43,7 +43,8 @@ Set-DatadogUser -SetRole "adm,ro,st"
 Set-DatadogUser -SetName "sting"
 Set-DatadogUser -SetEmail "string"
 # Metrics:
-Send-DatadogMetric -Metric "cool.beans.success" -Value "20"
+$Tags = @("creator:$env:USERNAME","host:$env:COMPUTERNAME")
+Send-DatadogMetric -Metric "cool.beans.success" -Value "20" -Tags $Tags
 ```
 
 
