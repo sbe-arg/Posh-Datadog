@@ -19,10 +19,10 @@ function Get-DatadogMonitor {
 
   )
     if(-NOT $MonitorId){
-      $url = "https://app.datadoghq.com/api/v1/monitor?api_key=$Api_Key&application_key=$App_Key
+      $url = "https://app.datadoghq.com/api/v1/monitor?api_key=$Api_Key&application_key=$App_Key"
     }
     else{
-      $url = "https://app.datadoghq.com/api/v1/monitor/$($MonitorId)?api_key=$Api_Key&application_key=$App_Key"
+      $url = "https://app.datadoghq.com/api/v1/monitor/$($MonitorId)`?api_key=$Api_Key&application_key=$App_Key"
     }
 
     $results = Invoke-RestMethod -Uri $url -Method Get
