@@ -32,7 +32,7 @@ function Send-DatadogEvent {
        }
 "@
 
-    $url = "https://app.datadoghq.com/api/v1/events?api_key=$env:Datadog_API_Key"
+    $url = "https://app.datadoghq.com/api/v1/events?api_key=$Api_Key"
 
     # debug
     $jsonObject = $Body | ConvertFrom-Json

@@ -17,7 +17,7 @@ function Get-DatadogUser {
       [switch]$Backup
   )
 
-    $url = "https://app.datadoghq.com/api/v1/user?api_key=$env:Datadog_API_Key&application_key=$env:Datadog_APP_Key"
+    $url = "https://app.datadoghq.com/api/v1/user?api_key=$Api_Key&application_key=$App_Key"
 
     $results = Invoke-RestMethod -Uri $url -Method Get
     if(-NOT $Filter){

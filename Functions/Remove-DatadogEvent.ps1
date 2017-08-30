@@ -16,7 +16,7 @@ function Remove-DatadogEvent {
 
   )
 
-    $url = "https://app.datadoghq.com/api/v1/events/$($EventId)?api_key=$env:Datadog_API_Key&application_key=$env:Datadog_APP_Key"
+    $url = "https://app.datadoghq.com/api/v1/events/$($EventId)?api_key=$Api_Key&application_key=$App_Key"
 
     Invoke-RestMethod -Uri $url -Method Delete
 

@@ -51,7 +51,7 @@ function Set-DatadogUser {
     Get-DatadogUser -Filter $User
     $Body = "{`n$Values`n}" | ConvertFrom-Json | ConvertTo-Json
 
-    $url = "https://app.datadoghq.com/api/v1/user/$($User)?api_key=$env:Datadog_API_Key&application_key=$env:Datadog_APP_Key"
+    $url = "https://app.datadoghq.com/api/v1/user/$($User)?api_key=$Api_Key&application_key=$App_Key"
 
     $results = Invoke-RestMethod -Uri $url -Method Put
     $results

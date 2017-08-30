@@ -36,7 +36,7 @@ function Send-DatadogMetric {
       ]
     }
 "@
-    $url = "https://app.datadoghq.com/api/v1/series?api_key=$env:Datadog_API_Key"
+    $url = "https://app.datadoghq.com/api/v1/series?api_key=$Api_Key"
 
     $results = Invoke-RestMethod -Uri $url -Body $Body -Method Post -ContentType application/json
     $results
