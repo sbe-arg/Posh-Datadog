@@ -30,6 +30,7 @@ Get-DatadogEvent -Filter "from-text-in-monitor" -Tags "tag1:value1" -Sources "al
 Remove-DatadogEvent -EventId "eventidhere"
 # Send events:
 Send-DatadogEvent -Title "my title" -Message "this is an event content" -Tags $Tags
+Send-DatadogStatsD '_e{10,09}:test title|test text|#tag1:value,tag2'
 # Query monitors:
 Get-DatadogMonitor -MonitorId "idhere"
 Get-DatadogMonitor -Filter "this is a monitor name/title"
@@ -45,6 +46,7 @@ Set-DatadogUser -SetEmail "string"
 # Metrics:
 $Tags = @("creator:$env:USERNAME","host:$env:COMPUTERNAME")
 Send-DatadogMetric -Metric "cool.beans.success" -Value "20" -Tags $Tags
+Send-DatadogStatsD 'my_metric:321|g'
 ```
 
 
