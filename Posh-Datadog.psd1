@@ -10,7 +10,7 @@
 RootModule = 'Posh-Datadog.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.6.0'
+ModuleVersion = '0.1.7.0'
 
 # ID used to uniquely identify this module
 GUID = 'c603c5d4-6807-4066-b157-f546408d45a9'

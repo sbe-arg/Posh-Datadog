@@ -36,7 +36,15 @@ function Get-DatadogMonitor {
 
     if($Backup){
       $folder = Read-Host = "Destination folder"
-      foreach ($r in $results){$r | ConvertTo-Json | Out-File -FilePath $folder\$($r.id).json}
+      if((test-path $folder) -eq $false){
+        Write-Warning "$folder path not found."
+        break
+      }
+      else{
+        foreach ($r in $results){
+          $r | ConvertTo-Json -depth 10 | Out-File -FilePath $folder\$($r.id).json -Encoding ascii -Verbose
+        }
+      }
     }
 
 }
