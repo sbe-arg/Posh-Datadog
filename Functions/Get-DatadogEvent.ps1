@@ -19,12 +19,17 @@ function Get-DatadogEvent {
   )
 
     $time = [int64](([datetime]::UtcNow)-(get-date "1/1/1970")).TotalSeconds # current time
-    $start_time = ($time - $Last) # ~1h ago
+    $start_time = ($time - $Last)
 
     $urlbase = "https://app.datadoghq.com/api/v1/events"
 
-    $url = $urlbase + "?api_key=$Api_Key" + "&" + "application_key=$App_Key" + "&" + "start=$start_time" + "&" + "end=$time" + "&" + "sources=$Sources" + "&" + "tags=$Tags"
+    if(! $tags){
+      $url = $urlbase + "?api_key=$Api_Key" + "&" + "application_key=$App_Key" + "&" + "start=$start_time" + "&" + "end=$time" + "&" + "sources=$Sources"
+    }
+    else{
+      $url = $urlbase + "?api_key=$Api_Key" + "&" + "application_key=$App_Key" + "&" + "start=$start_time" + "&" + "end=$time" + "&" + "sources=$Sources" + "&" + "tags=$Tags"
+    }
     $results = Invoke-RestMethod -Uri $url -Method Get -UseBasicParsing
-    $results = $results | Select-Object -ExpandProperty events | Where-Object {$_.text -like "*$Filter*"}
+    $results = $results | Select-Object -ExpandProperty events | Where-Object {$_.title -like "*$Filter*"}
     $results
 }
