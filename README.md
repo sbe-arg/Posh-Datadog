@@ -6,7 +6,8 @@ Download module -> run Posh-Datadog.sandbox.ps1 to load.
 
 ### Step One: Install psget
 ```powershell
-(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/psget/psget/master/GetPsGet.ps1") | iex
 ```
 
 
