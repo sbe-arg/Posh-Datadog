@@ -10,7 +10,7 @@
 RootModule = 'Posh-Datadog.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.7.0'
+ModuleVersion = '0.1.8.0'
 
 # ID used to uniquely identify this module
 GUID = 'c603c5d4-6807-4066-b157-f546408d45a9'
@@ -64,7 +64,17 @@ Description = 'Datadog Posh Module'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = '*'
+FunctionsToExport = @(
+  'Get-DatadogEvent'
+  'Get-DatadogMonitor'
+  'Get-DatadogUser'
+  'Invoke-DatadogSilencing'
+  'Remove-DatadogEvent'
+  'Send-DatadogEvent'
+  'Send-DatadogMetric'
+  'Send-DatadogStatsD'
+  'Set-DatadogUser'
+)
 
 # Cmdlets to export from this module
 CmdletsToExport = @()

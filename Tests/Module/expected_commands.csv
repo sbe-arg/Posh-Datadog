@@ -1,0 +1,10 @@
+Name
+Get-DatadogEvent
+Get-DatadogMonitor
+Get-DatadogUser
+Invoke-DatadogSilencing
+Remove-DatadogEvent
+Send-DatadogEvent
+Send-DatadogMetric
+Send-DatadogStatsD
+Set-DatadogUser

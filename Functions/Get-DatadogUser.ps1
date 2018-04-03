@@ -24,7 +24,7 @@ function Get-DatadogUser {
       $results
     }
     else{
-      $results = $results | select -expandproperty * | where {$_.Handle -like "*$Filter*"}
+      $results = $results | Select-Object -expandproperty * | Where-Object {$_.Handle -like "*$Filter*"}
       $results
     }
 

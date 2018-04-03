@@ -11,6 +11,7 @@
 #>
 
 function Set-DatadogUser {
+  [CmdletBinding(SupportsShouldProcess=$true,ConfirmImpact="High")]
   param(
       [Parameter(Mandatory=$false)]
       [string]$Api_Key = $env:Datadog_API_Key,
@@ -49,11 +50,14 @@ function Set-DatadogUser {
     }
 
     Get-DatadogUser -Filter $User
-    $Body = "{`n$Values`n}" | ConvertFrom-Json | ConvertTo-Json
+    # $Body = "{`n$Values`n}" | ConvertFrom-Json | ConvertTo-Json
 
     $url = "https://app.datadoghq.com/api/v1/user/$($User)?api_key=$Api_Key&application_key=$App_Key"
 
-    $results = Invoke-RestMethod -Uri $url -Method Put
-    $results
+    # -whatif?
+    if($pscmdlet.ShouldProcess($user)) {
+      $results = Invoke-RestMethod -Uri $url -Method Put
+      $results
+    }
 
 }

@@ -30,7 +30,7 @@ function Get-DatadogMonitor {
       $results
     }
     else{
-      $results = $results | where {$_.Name -like "*$Filter*"}
+      $results = $results | Where-Object {$_.Name -like "*$Filter*"}
       $results
     }
 
