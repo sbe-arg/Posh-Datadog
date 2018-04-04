@@ -9,7 +9,7 @@ install:
       Install-Module -Name Pester -Force
 
 environment:
-  ModuleGItUrl: https://github.com/sbe-arg/Posh-Santiago/archive/master.zip
+  ModuleGItUrl: https://github.com/sbe-arg/Posh-Datadog/archive/master.zip
   NuGetApiKey:
     secure: 9g0XGamfdzplyiYGs//sZteLfHaeciZve6EAYfIOqKWfgmS++0CFW9s8q7PdD+JA
 
