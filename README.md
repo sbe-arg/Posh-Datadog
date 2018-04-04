@@ -1,5 +1,7 @@
-# Posh-Datadog
-Hand commands for Datadog event management.
+Posh-Datadog module
+===================
+
+[![Build status](https://ci.appveyor.com/api/projects/status/cilr6ssa6agsm0ct?svg=true)](https://ci.appveyor.com/project/sbe-arg/posh-datadog)
 
 ## To test/debug:
 Download module -> run Posh-Datadog.sandbox.ps1 to load.

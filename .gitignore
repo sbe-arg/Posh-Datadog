@@ -1,0 +1,5 @@
+/.vscode/
+/build/
+Test.xml
+vendor/packages/
+TestsResults.xml
