@@ -1,7 +1,13 @@
 install:
-  - cinst pester
-  - ps: Install-PackageProvider -Name NuGet -Force
-  - ps: Install-Module PsScriptAnalyzer -Force
+  - ps: |
+    Install-PackageProvider -Name NuGet -Force | Out-Null
+    Install-Module PsScriptAnalyzer -Force
+    Install-Module -Name Pester -Force
+    Install-Module -Name posh-git -Force
+
+environment:
+  NuGetApiKey:
+    secure: 9g0XGamfdzplyiYGs//sZteLfHaeciZve6EAYfIOqKWfgmS++0CFW9s8q7PdD+JA
 
 build: false
 
@@ -24,4 +30,9 @@ test_script:
       }
       Else {
         Update-AppveyorTest -Name "PsScriptAnalyzer" -Outcome Passed
+      }
+  - ps: |
+      try{Publish-Module -Name Posh-Datadog -NuGetApiKey $env:NuGetApiKey}
+      catch{
+        Write-Warning "Not publishing to PowerShellGallery. $($_.Exception.Message)"
       }
