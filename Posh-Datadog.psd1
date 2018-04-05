@@ -10,7 +10,7 @@
 RootModule = 'Posh-Datadog.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.9'
+ModuleVersion = '0.1.10'
 
 # ID used to uniquely identify this module
 GUID = 'c603c5d4-6807-4066-b157-f546408d45a9'
@@ -25,7 +25,7 @@ CompanyName = 'SBE'
 Copyright = '(c) 2017. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Datadog Posh Module'
+Description = 'Datadog powershell module for common tasks.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -106,7 +106,7 @@ PrivateData = @{
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/sbe-arg/Posh-Datadog'
 
         # A URL to an icon representing this module.
         # IconUri = ''
