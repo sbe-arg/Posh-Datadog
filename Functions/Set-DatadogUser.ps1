@@ -11,7 +11,7 @@
 #>
 
 function Set-DatadogUser {
-  [CmdletBinding(SupportsShouldProcess=$true,ConfirmImpact="High")]
+  [CmdletBinding(SupportsShouldProcess=$true,ConfirmImpact="Low")]
   param(
       [Parameter(Mandatory=$false)]
       [string]$Api_Key = $env:Datadog_API_Key,
@@ -55,7 +55,7 @@ function Set-DatadogUser {
     $url = "https://app.datadoghq.com/api/v1/user/$($User)?api_key=$Api_Key&application_key=$App_Key"
 
     # -whatif?
-    if($pscmdlet.ShouldProcess($user)) {
+    if($pscmdlet.ShouldProcess("Edit $user")) {
       $results = Invoke-RestMethod -Uri $url -Method Put
       $results
     }
