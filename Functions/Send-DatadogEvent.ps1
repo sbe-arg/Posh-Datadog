@@ -9,19 +9,18 @@
 #>
 
 function Send-DatadogEvent {
-  param(
-      [Parameter(Mandatory=$false)]
-      [string]$Api_Key = $env:Datadog_API_Key,
-      [string]$Title,
-      [string]$Message,
-      [ValidateSet("Normal","Low")]
-      [string]$Priority = "Normal",
-      [string]$Tags,
-      [ValidateSet("Error","Warning","Success","Info")]
-      [string]$Type = "Info"
-
-  )
-
+    param(
+        [Parameter(Mandatory = $false)]
+        [string]$Api_Key = $env:Datadog_API_Key,
+        [string]$Title,
+        [string]$Message,
+        [ValidateSet("Normal", "Low")]
+        [string]$Priority = "Normal",
+        [string]$Tags = "`"created-by:powershell.posh-datadog`"", # needs a default tag if no -tags $tags specified
+        [ValidateSet("Error", "Warning", "Success", "Info")]
+        [string]$Type = "Info"
+    )
+    Write-Warning "Sending $Priority priority $Type Event:$Title Message:$Message"
     $Body = @"
     {
           "title": "$Title",
@@ -37,7 +36,6 @@ function Send-DatadogEvent {
     # debug
     # $jsonObject = $Body | ConvertFrom-Json
 
-    $results = Invoke-RestMethod -Uri $url -Body $Body -Method Post
-    $results = $results | ConvertFrom-Json | Select-Object -ExpandProperty event
+    $results = Invoke-RestMethod -Uri $url -Body $Body -Method Post -ContentType application/json
     $results
 }
